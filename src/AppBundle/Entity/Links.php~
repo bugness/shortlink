@@ -1,0 +1,33 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Links
+ *
+ * @ORM\Table(name="links", indexes={@ORM\Index(name="dest_idx", columns={"destination"})})
+ * @ORM\Entity
+ */
+class Links
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="destination", type="string", length=200, nullable=false)
+     */
+    private $destination;
+
+
+}
+

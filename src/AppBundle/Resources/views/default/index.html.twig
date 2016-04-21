@@ -1,0 +1,16 @@
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <div id="name">
+                <h1>ShortLink</h1>
+            </div>
+            <div id="form-url">
+                <input type="text" id="destination" placeholder="Input your url here">
+                <button id="generate-link">Generate short link</button>
+            </div>
+            <div id="result"></div>
+        </div>
+    </div>
+{% endblock %}
