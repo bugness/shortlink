@@ -32,7 +32,7 @@ class Link
     /**
      * @var string
      *
-     * @ORM\Column(name="destination", type="string", length=200, nullable=false)
+     * @ORM\Column(name="destination", type="string", length=2048, nullable=false)
      */
     private $destination;
 

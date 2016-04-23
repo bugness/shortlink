@@ -40,9 +40,19 @@ class DefaultController extends Controller
         $link = $repository->findOneBy(['destination' => $destination]);
 
         if (!$link) {
+            $generator = $this->get('token_generator');
+            $attempt   = 1;
+            $limit     = $this->getParameter('attepts_to_generate_code');
             do {
-                $code = $this->get('token_generator')->getToken(6);
-            } while ($repository->findOneBy(['code' => $code]));
+                $code = $generator->getToken(6);
+                $attempt++;
+            } while ($attempt < $limit && $repository->findOneBy(['code' => $code]));
+
+            if ($attempt == $limit) {
+                return new JsonResponse([
+                    'error' => 'Sorry but we can\'t generate short link for your URL',
+                ]);
+            }
 
             $link = new Link;
             $link->setDestination($destination);
