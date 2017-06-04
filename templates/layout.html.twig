@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title 'Short Link Generator' %}</title>
+        <link href="{{ asset('css/main.css') }}" rel="stylesheet" type="text/css" />
+        {% block stylesheets '' %}
+    </head>
+    <body>
+        {% block content %}{% endblock %}
+        {% block javascripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+        <script type="text/javascript" src="{{ asset('/js/main.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>
