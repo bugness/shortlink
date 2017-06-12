@@ -13,6 +13,18 @@ $app->register(new AssetServiceProvider());
 $app->register(new TwigServiceProvider());
 $app->register(new HttpFragmentServiceProvider());
 
+$app['db'] = function ($app) {
+    $db = $app['settings.db'];
+    return new \PDO(
+        sprintf('mysql:host=%s;port=3306;dbname=%s', $db['host'], $db['name']),
+        $db['user'],
+        $db['pass'],
+        [
+            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        ]
+    );
+};
 $app['token_generator'] = function () {
     return new TokenGenerator();
 };
